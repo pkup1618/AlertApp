@@ -3,24 +3,21 @@ package com.nodomen.alertapp.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "alerts", schema = "alertapp")
-public class Alert {
+@Table(name = "roles", schema = "alertapp")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
-    @Column(name = "name", length = 50)
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "text", length = 250)
-    private String text;
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -30,14 +27,6 @@ public class Alert {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
     }
 
 }

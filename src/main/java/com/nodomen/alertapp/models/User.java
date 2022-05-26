@@ -1,35 +1,66 @@
 package com.nodomen.alertapp.models;
 
+import javax.persistence.*;
+import java.util.Collection;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity(name = "user")
+@Entity
+@Table(name = "users", schema = "alertapp")
 public class User {
-
     @Id
-    public Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
 
-    private String nickname;
-    public String getNickname() {
-        return nickname;
-    }
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    @Column(name = "username", nullable = false, length = 30)
+    private String username;
+
+    @Column(name = "email", length = 50)
+    private String email;
+
+    @Column(name = "password", length = 80)
+    private String password;
+
+    @ManyToMany
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Collection<Role> roles;
+
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    private String passwordHash;
-    public String getPasswordHash() {
-        return passwordHash;
-    }
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 
-    public User() {}
+    public String getUsername() {
+        return username;
+    }
 
-    public User(String nickname, String passwordHash) {
-        setNickname(nickname);
-        setPasswordHash(passwordHash);
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
