@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@Service
+@Service("userService_custom")
 public class UserService implements UserDetailsService {
 
     private UserRepository userRepository;

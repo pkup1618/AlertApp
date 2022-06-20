@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+
+</head>
+
+<body>
+
+    <div>
+
+        <form th:action="@{/registration}" th:method="POST" th:object="${user}">
+
+            <h2>Please login</h2>
+
+            <p>
+
+                <label for="username">Username</label>
+
+                <input id="username" placeholder="Username" th:field="*{username}" type="text"/>
+
+            </p>
+
+            <p>
+
+                <label for="password">Email</label>
+
+                <input id="password" placeholder="Password" th:field="*{password}" type="text"/>
+
+            </p>
+
+            <p>
+
+                <label for="submit password">Submit Password</label>
+
+                <input id="submit password" placeholder="Submit password" th:field="*{password}" type="text"/>
+
+            </p>
+
+            <input type="submit" value="Register"/>
+
+        </form>
+        <br>
+        <a href="/login">У меня уже есть аккаунт, войти</a>
+
+    </div>
+
+</body>
+
+</html>
