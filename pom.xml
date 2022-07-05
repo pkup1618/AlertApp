@@ -49,6 +49,13 @@
             <artifactId>spring-boot-starter-web</artifactId> <!-- Уже содержит starter-tomcat -->
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.vk.api/sdk -->
+        <dependency>
+            <groupId>com.vk.api</groupId>
+            <artifactId>sdk</artifactId>
+            <version>1.0.14</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

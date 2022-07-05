@@ -1,8 +1,13 @@
 package com.nodomen.alertapp;
 
+import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.httpclient.HttpTransportClient;
+import com.vk.api.sdk.objects.GroupAuthResponse;
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -24,7 +29,10 @@ import java.util.Properties;
 public class AlertAppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AlertAppApplication.class, args);
+
+        ConfigurableApplicationContext ctx = SpringApplication.run(AlertAppApplication.class, args);
+
+        VkApiClient vk = ctx.getBean("VkApiClient_custom", VkApiClient.class);
 
     }
 
@@ -47,6 +55,17 @@ public class AlertAppApplication {
 
         return new JpaTransactionManager(entityManagerFactory());
     }
+
+
+    @Bean("VkApiClient_custom")
+    public VkApiClient vkApiClient() {
+        return new VkApiClient(new HttpTransportClient());
+    }
+
+
+//    @Bean("CommunityAuth")
+//    public GroupAuthResponse authResponse = vkApiClient()
+//            .oAuth().groupAuthorizationCodeFlow()
 
 
     @Bean("hibernateJpaVendorAdapter_custom")

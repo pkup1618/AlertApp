@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class RegistrationController {
@@ -28,6 +29,7 @@ public class RegistrationController {
 
     @GetMapping("/registration")
     public String registrationPage(Model model) {
+
         model.addAttribute("user", new User());
 
         return "registration";
@@ -37,15 +39,9 @@ public class RegistrationController {
     @PostMapping("/registration")
     public String registerUser(@ModelAttribute("user") User user) {
 
-//        System.out.println(user.getUsername());
-//        System.out.println(user.getEmail());
-        System.out.println(user.getPassword());
-
-
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        repository.save(user);
 
+        repository.save(user);
 
         return "redirect:/login";
     }

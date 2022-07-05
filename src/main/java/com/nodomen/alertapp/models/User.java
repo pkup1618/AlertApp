@@ -2,6 +2,7 @@ package com.nodomen.alertapp.models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import com.nodomen.alertapp.models.Alert;
 
 @Entity
 @Table(name = "users", schema = "alertapp")
@@ -23,6 +24,14 @@ public class User {
     @ManyToMany
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
+
+    @OneToMany
+    @JoinColumn(name = "id")
+    private Collection<Alert> alerts;
+
+    public Collection<Alert> getAlerts() {return alerts; }
+
+    public void setAlerts(Collection<Alert> alerts) {this.alerts = alerts;}
 
     public Collection<Role> getRoles() {
         return roles;

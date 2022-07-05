@@ -16,6 +16,17 @@ public class Alert {
     @Column(name = "text", length = 250)
     private String text;
 
+    @ManyToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

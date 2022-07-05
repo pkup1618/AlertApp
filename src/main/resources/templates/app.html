@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Title</title>
+
+        <link rel="stylesheet" type="text/css" th:href="@{/css/css.css}">
+
+    </head>
+
+    <body>
+
+
+            <h2 th:text="'Здравствуйте, ' + ${user.getUsername()}">Здравствуйте</h2>
+
+        <p>
+
+            <a href="/logout">Выйти из системы</a>
+
+        </p>
+
+    <br>
+
+        <p>
+
+            <a href="/profile">Настройки профиля</a>
+
+        </p>
+
+    <h2 th:text="'Ваши уведомления: ' + ${alerts.size()}"></h2>
+
+            <div style="text-align: center;">
+                <table>
+
+                    <tr th:each="alert, iter : ${alerts}">
+
+                        <td th:text="${alert.getName()}"></td>
+
+                        <td>
+                            <a th:href="'/app/configure_alert/?id=' + ${alert.getId()}">Изменить</a>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+
+    <p>
+
+        <a href="/app/add_alert">Добавить уведомление</a>
+
+    </p>
+
+    </body>
+
+</html>
