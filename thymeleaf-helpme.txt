@@ -1,0 +1,7 @@
+#{} - сообщение.
+th:text вычисляет выражение справа, и ставит его в содержимое тега.
+
+( ниже, если он как-то вычислит home.welcome, то перезапишет им "Welcome to our grocery store!" )
+<p th:text="#{home.welcome}"> Welcome to our grocery store! </p>
+
+action - тот http-мето, который надо будет вызвать, отправив данные с этой формы

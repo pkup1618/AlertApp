@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Title</title>
+
+        <link rel="stylesheet" type="text/css" th:href="@{/css/css.css}">
+
+    </head>
+
+    <body>
+
+        <p>
+
+            <a href="/../app"> Назад </a>
+
+        </p>
+
+
+        <form th:action="@{/app/configure_alert/}" th:method="POST" th:object="${alert}" >
+
+            <h2>Отредактируйте уведомление</h2>
+            <p>
+
+                <label for="alert name">Название уведомления </label>
+
+                <input class="input" id="alert name" placeholder="name" th:field="${alert.name}" type="text"/>
+
+            </p>
+
+            <p>
+
+                <label for="alert text">Текст уведомления</label>
+
+                <input class="input" id="alert text" placeholder="text" th:field="${alert.text}" type="text"/>
+
+            </p>
+
+            <p>
+
+                <br>
+
+                <button type="submit"> change </button>
+
+            </p>
+        </form>
+
+    </body>
+
+</html>
