@@ -8,13 +8,14 @@
 
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/css.css}">
+    <script src="/js/js.js"></script>
 </head>
 
 <body>
 
     <div>
 
-        <form th:action="@{/registration}" th:method="POST" th:object="${user}">
+        <form id="registration form" th:action="@{/registration}" th:method="POST" th:object="${user}">
 
             <h2>Please login</h2>
 
@@ -50,18 +51,18 @@
 
             </p>
 
-            <p>
-
-                <br>
-
-                <button type="submit">Register</button>
-
-            </p>
-
 
         </form>
 
+        <p>
 
+            <br>
+
+            <button id="submit button" onclick="checkForm()">Register</button>
+
+        </p>
+
+            <br>
 
         <p>
 
